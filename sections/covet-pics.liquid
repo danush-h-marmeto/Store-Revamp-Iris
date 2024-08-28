@@ -1,0 +1,90 @@
+
+{% if section.settings.top_margin > 0 or section.settings.bottom_margin > 0 %}
+    {% style %}
+        .covet-pics {
+            margin-top: {{  section.settings.top_margin| append: 'px' }};
+            margin-bottom: {{ section.settings.bottom_margin| append: 'px' }};
+        }
+        .covet-pics--inner{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 3.6rem;
+            row-gap:2rem;
+            margin-bottom: 35px;
+            font-family: EB Garamond, serif;
+            font-weight: 400;
+        }
+        .covet-pics--inner svg{
+            width: 3.5rem;
+            height: 3.5rem;
+        }
+        @media (max-width: 768px) {
+            .covet-pics {
+                margin-top: 0;
+            }
+        }   
+    {% endstyle %}
+{% endif %}
+
+
+<div class="covet-pics--wrapper">
+    <div class="covet-pics--inner">
+      {% render 'icons', icon: 'instashop' %}
+      {{ section.settings.title }}
+    </div>
+    <div>
+        {{ section.settings.gallery-code }}
+    </div>
+</div>
+
+
+
+{% schema %}
+{
+    "name": "Covet.pics Gallery",
+    "tag": "section",
+    "class": "covet-pics",
+    "settings": [
+        {
+            "type": "textarea",
+            "id": "gallery-code",
+            "label": "Gallery Embed Code"
+        },
+        {
+            "type": "range",
+            "id": "top_margin",
+            "label": "Spacing above gallery",
+            "default": 50,
+            "min": 0,
+            "max": 500,
+            "step": 5,
+            "unit": "px"
+        },
+        {
+            "type": "range",
+            "id": "bottom_margin",
+            "label": "Spacing below gallery",
+            "default": 0,
+            "min": 0,
+            "max": 500,
+            "step": 5,
+            "unit": "px"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "#irisfashion"
+        }
+    ],
+    "presets": [
+        {
+            "category": "Image",
+            "name": "Covet.pics gallery"
+        }
+    ]
+}
+{% endschema %}
+

@@ -1,0 +1,206 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "page_banner_e7bUCi": {
+      "type": "page-banner",
+      "settings": {
+        "title": "",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "location_mHrXf3": {
+      "type": "location",
+      "blocks": {
+        "location_ttXVGe": {
+          "type": "location",
+          "settings": {
+            "page": "barnes-1",
+            "map_lat": "51.475033",
+            "map_lng": "-0.240208",
+            "image": "shopify:\/\/shop_images\/Barnes_c50ba590-3992-4433-8b76-a948ab65f33b.jpg",
+            "contact_info_title": "Get in touch",
+            "email": "barnes@irisfashion.co.uk",
+            "tel": "020 8741 0816",
+            "address": "86 Church Road, Barnes, SW13 0DQ",
+            "btn_url": "",
+            "btn_text": ""
+          }
+        },
+        "location_ALG7RM": {
+          "type": "location",
+          "settings": {
+            "page": "battersea-1",
+            "map_lat": "51.5151",
+            "map_lng": "-0.164779",
+            "image": "shopify:\/\/shop_images\/Battersea.jpg",
+            "contact_info_title": "Get in touch",
+            "email": "battersea@irisfashion.co.uk",
+            "tel": "020 7924 6948",
+            "address": "143-145 Northcote Road, London, SW11 6PX",
+            "btn_url": "",
+            "btn_text": ""
+          }
+        },
+        "location_74NJYR": {
+          "type": "location",
+          "settings": {
+            "page": "hampstead-1",
+            "map_lat": "",
+            "map_lng": "",
+            "image": "shopify:\/\/shop_images\/Store_Hampstead.jpg",
+            "contact_info_title": "Hampstead",
+            "email": "hampstead@irisfashion.co.uk",
+            "tel": "0207 435 3007.",
+            "address": "28 Rosslyn Hill, London, NW3 1NH",
+            "btn_url": "",
+            "btn_text": ""
+          }
+        },
+        "location_TDEYFj": {
+          "type": "location",
+          "settings": {
+            "page": "wimbledon-1",
+            "map_lat": "51.424930",
+            "map_lng": "-0.216670",
+            "image": "shopify:\/\/shop_images\/wimbledon_pic.jpg",
+            "contact_info_title": "Get in touch",
+            "email": "wimbledon@irisfashion.co.uk",
+            "tel": "0203 7505699",
+            "address": "74 High St, Wimbledon SW19 5EG",
+            "btn_url": "shopify:\/\/pages\/wimbledon",
+            "btn_text": ""
+          }
+        },
+        "location_DmGedT": {
+          "type": "location",
+          "settings": {
+            "page": "chiswick-pop-up-store-1",
+            "map_lat": "-0.258202",
+            "map_lng": "51.492799",
+            "image": "shopify:\/\/shop_images\/CHISWICK_STORE.jpg",
+            "contact_info_title": "GET IN TOUCH",
+            "email": "chiswick@irisfashoin.co.uk",
+            "tel": "",
+            "address": "198 Chiswick High Rd, London W4 1PD",
+            "btn_url": "",
+            "btn_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "location_ttXVGe",
+        "location_ALG7RM",
+        "location_74NJYR",
+        "location_TDEYFj",
+        "location_DmGedT"
+      ],
+      "settings": {
+        "title": "",
+        "api_key": "AIzaSyBFh_CJUU7dH2KlNJnZgOfMzLEsIYJRAMg",
+        "map_zoom": 14,
+        "map_style": "[\n    {\n        \"featureType\": \"administrative\",\n        \"elementType\": \"labels.text.fill\",\n        \"stylers\": [\n            {\n                \"color\": \"#444444\"\n            }\n        ]\n    },\n    {\n        \"featureType\": \"landscape\",\n        \"elementType\": \"all\",\n        \"stylers\": [\n            {\n                \"color\": \"#f2f2f2\"\n            }\n        ]\n    },\n    {\n        \"featureType\": \"poi\",\n        \"elementType\": \"all\",\n        \"stylers\": [\n            {\n                \"visibility\": \"off\"\n            }\n        ]\n    },\n    {\n        \"featureType\": \"road\",\n        \"elementType\": \"all\",\n        \"stylers\": [\n            {\n                \"saturation\": -100\n            },\n            {\n                \"lightness\": 45\n            }\n        ]\n    },\n    {\n        \"featureType\": \"road.highway\",\n        \"elementType\": \"all\",\n        \"stylers\": [\n            {\n                \"visibility\": \"simplified\"\n            }\n        ]\n    },\n    {\n        \"featureType\": \"road.arterial\",\n        \"elementType\": \"labels.icon\",\n        \"stylers\": [\n            {\n                \"visibility\": \"off\"\n            }\n        ]\n    },\n    {\n        \"featureType\": \"transit\",\n        \"elementType\": \"all\",\n        \"stylers\": [\n            {\n                \"visibility\": \"off\"\n            }\n        ]\n    },\n    {\n        \"featureType\": \"water\",\n        \"elementType\": \"all\",\n        \"stylers\": [\n            {\n                \"color\": \"#46bcec\"\n            },\n            {\n                \"visibility\": \"on\"\n            }\n        ]\n    }\n]"
+      }
+    },
+    "contact": {
+      "type": "contact-page",
+      "blocks": {
+        "form_field_jaLhzX": {
+          "type": "form_field",
+          "settings": {
+            "field_type": "select",
+            "required": false,
+            "placeholder": "Enquiry type",
+            "options": "Returns, Delivery, Other"
+          }
+        },
+        "form_field_GxyP3V": {
+          "type": "form_field",
+          "settings": {
+            "field_type": "text",
+            "required": false,
+            "placeholder": "Name",
+            "options": ""
+          }
+        },
+        "form_field_cBaBPC": {
+          "type": "form_field",
+          "settings": {
+            "field_type": "email",
+            "required": true,
+            "placeholder": "Email",
+            "options": ""
+          }
+        },
+        "form_field_ij4dnY": {
+          "type": "form_field",
+          "settings": {
+            "field_type": "textarea",
+            "required": true,
+            "placeholder": "Content",
+            "options": ""
+          }
+        },
+        "contact_info_qLanQL": {
+          "type": "contact_info",
+          "settings": {
+            "title": "CUSTOMER SERVICE",
+            "email": "customercare@irisfashion.co.uk",
+            "tel": "020 8747 3597",
+            "address": ""
+          }
+        },
+        "contact_info_Xwx8Ah": {
+          "type": "contact_info",
+          "settings": {
+            "title": "PRESS & INFLUENCER PARTNERSHIP ENQUIRIES",
+            "email": "rosanna@irisfashion.co.uk",
+            "tel": "020 8747 3597",
+            "address": ""
+          }
+        },
+        "contact_info_x3baXy": {
+          "type": "contact_info",
+          "settings": {
+            "title": "HEAD OFFICE",
+            "email": "webteam@irisfashion.co.uk",
+            "tel": "",
+            "address": "143-145 Northcote Road, Battersea, SW11 6PX"
+          }
+        }
+      },
+      "block_order": [
+        "form_field_jaLhzX",
+        "form_field_GxyP3V",
+        "form_field_cBaBPC",
+        "form_field_ij4dnY",
+        "contact_info_qLanQL",
+        "contact_info_Xwx8Ah",
+        "contact_info_x3baXy"
+      ],
+      "settings": {
+        "section_heading": "Contact us",
+        "section_description": "<p>For any queries or feedback please complete the form below. We endeavour to respond to e-mails within 48 hours but at busy times this can take longer. If you require more urgent assistance, wish to place an order or speak to a customer service advisor directly please call 020 8747 3597.<\/p><p>Office Opening Hours: <strong>Monday<\/strong> to <strong>Friday<\/strong>, <strong>9.30 - 5.30 pm<\/strong><br\/>Any enquires submitted during a weekend will be answered the next working day.<\/p>",
+        "title": "GET IN TOUCH",
+        "thank_you_title": "Thank you",
+        "thank_you_text": "<p>Your message has been sent<\/p>",
+        "thank_you_cta_link": "https:\/\/www.irisfashion.co.uk\/",
+        "thank_you_cta_text": "Back to home"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "page_banner_e7bUCi",
+    "location_mHrXf3",
+    "contact"
+  ]
+}

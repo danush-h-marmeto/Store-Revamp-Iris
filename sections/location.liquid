@@ -1,0 +1,183 @@
+{{ 'location.css' |  asset_url |  stylesheet_tag }}
+{%- for block in section.blocks -%}
+        {%- if block.settings.page == page.handle -%}
+            <section class="location">
+                <div class="container-sm flex f-vertical-center">
+                    {% render 'responsive-picture', desktopImage:block.settings.image %}
+
+                    <div class="location__information">
+                        <div class="rte">
+                            {{ page.content }}
+                        </div>
+
+                        {% if block.settings.contact_info_title != blank or block.settings.email != blank or block.settings.tel != blank or block.settings.address != blank or block.settings.btn_url != blank %}
+                            <div class="contact-information__grid--item">
+                                {% if block.settings.contact_info_title != blank %}
+                                    <h3 class="subtitle-md">{{ block.settings.contact_info_title }}</h3>
+                                {% endif %}
+                                {% if block.settings.email != blank or block.settings.tel != blank or block.settings.address != blank or block.settings.btn_url != blank %}
+                                    <ul class="list-clear list-unstyled">
+                                        {% if block.settings.email != blank %}
+                                            <li class="bold md">
+                                                {%- render 'icons', icon: 'email' -%}
+                                                <a class="full-unstyled-link" href="mailto:{{ block.settings.email }}">{{ block.settings.email }}</a>
+                                            </li>
+                                        {% endif %}
+                                        {% if block.settings.tel != blank %}
+                                            <li class="bold md">
+                                                {%- render 'icons', icon: 'phone' -%}
+                                                <a class="full-unstyled-link" href="tel:{{ block.settings.tel | replace: '+44(0)', '0' | remove: ' ' | remove: '+' | remove: '(' | remove: ')' | remove: ' ' }}">{{ block.settings.tel }}</a>
+                                            </li>
+                                        {% endif %}
+                                        {% if block.settings.address != blank %}
+                                            <li class="bold md">
+                                                {%- render 'icons', icon: 'pin' -%}
+                                                <p>{{ block.settings.address }}</p>
+                                            </li>
+                                        {% endif %}
+                                        {% if block.settings.btn_text != blank %}
+                                            <li class="more-button">
+                                                <a class="full-unstyled-link" href="{{ block.settings.btn_url }}">{{ block.settings.btn_text }}</a>
+                                            </li>
+                                        {% endif %}
+                                    </ul>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+
+                    </div>
+                </div>
+            </section>
+        {%- endif -%}
+{%- endfor -%}
+
+<section class="locations">
+    <div class="container-sm">
+        <h2 class="locations__tile title-md">{{ section.settings.title }}</h2>
+        <div class="locations__selector flex">
+            <div class="locations__selector--list">
+                {%- for block in section.blocks -%}
+                    {% assign location_page = pages[block.settings.page] %}
+                    <a href="{{ pages[block.settings.page].url }}"  class="locations__selector--list-item">{{ location_page.title }}</a>
+                {%- endfor -%}
+            </div>
+            {% assign map_to_show = section.blocks.first %}
+                {%- for block in section.blocks -%}
+                    {%- if block.settings.page == page.handle -%}
+                        {% assign map_to_show = block %}
+                    {%- endif -%}
+                {%- endfor -%}
+            {%- render 'google-map', lat: map_to_show.settings.map_lat, lng: map_to_show.settings.map_lng, class: 'locations__selector--map' -%}
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name":"Locations",
+    "settings":[
+        {
+            "type":"text",
+            "id":"title",
+            "label":"Title",
+            "default":"Our boutiques"
+        },
+        {
+            "type":"header",
+            "content":"Map"
+        },
+        {
+            "type":"text",
+            "id":"api_key",
+            "label":"Google Maps API key",
+            "info":"See https://help.shopify.com/manual/using-themes/troubleshooting/map-section-api-key"
+        },
+        {
+            "type":"range",
+            "id":"map_zoom",
+            "min":1,
+            "max":20,
+            "step":1,
+            "unit":"x",
+            "label":"Zoom level",
+            "default":14
+        },
+        {
+            "type":"image_picker",
+            "id":"map_marker",
+            "label":"Custom map marker",
+            "info":"Optional"
+        },
+        {
+            "type":"html",
+            "id":"map_style",
+            "label":"Copy + Paste map style code here",
+            "info":"See: https://snazzymaps.com/"
+        }
+    ],
+    "blocks":[
+        {
+            "type":"location",
+            "name":"Location",
+            "settings":[
+                {
+                    "type": "page",
+                    "id": "page",
+                    "label": "Location page"
+                },
+                {
+                    "type":"text",
+                    "id":"map_lat",
+                    "label":"Latitude/Lat"
+                },
+                {
+                    "type":"text",
+                    "id":"map_lng",
+                    "label":"Longitude/Lng"
+                },
+                {
+                    "type":"image_picker",
+                    "id":"image",
+                    "label":"Image"
+                },
+                {
+                    "type":"text",
+                    "id":"contact_info_title",
+                    "label":"Contact information title",
+                    "placeholder":"HEAD OFFICE"
+                },
+                {
+                    "type":"text",
+                    "id":"email",
+                    "label":"Email"
+                },
+                {
+                    "type":"text",
+                    "id":"tel",
+                    "label":"Telephone"
+                },
+                {
+                    "type":"text",
+                    "id":"address",
+                    "label":"Address"
+                },
+                {
+                    "type":"url",
+                    "id":"btn_url",
+                    "label":"Button URL"
+                },
+                {
+                    "type":"text",
+                    "id":"btn_text",
+                    "label":"Button Text"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Location"
+        }
+    ]
+}
+{% endschema %}

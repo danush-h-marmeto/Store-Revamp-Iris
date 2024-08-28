@@ -1,0 +1,288 @@
+.location {
+  margin: 80px 0;
+}
+.flex.f-vertical-center {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;
+}
+.container-sm {
+  padding: 0 100px;
+}
+.rte h2 {
+  font-size: 30px;
+  line-height: 1.2;
+}
+.subtitle-sm {
+  font-weight: 300;
+  text-transform: uppercase;
+  font-family: Lato, sans-serif;
+  font-size: 23px;
+  letter-spacing: 1.92;
+}
+.subtitle-sm {
+  font-family: Lato, sans-serif;
+  font-size: 16px;
+  letter-spacing: 1.33;
+}
+.m-t-m {
+  margin-top: 55px;
+}
+.m-t-s {
+  margin-top: 40px;
+}
+.rte, .esc-size-guide--popup, .Esc-returns-container {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 26px;
+  color: #090b09;
+}
+.rte h2{
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+@media (max-width: 1024px) {
+  .location .container-sm {
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    -webkit-align-items: flex-start;
+    -moz-align-items: flex-start;
+    align-items: flex-start;
+  }
+}
+@media (max-width: 768px) {
+  .contact-page{
+    gap: 0 !important;
+  }
+  .contact-form input[type=submit]{
+    font-size: 12px;
+    color: black;
+    height: 5rem;
+    -webkit-appearance: none;
+    -moz-appearance:    none;
+    appearance:         none;   
+    -webkit-border-radius: 0;  /* Safari 3-4, iOS 1-3.2, Android 1.6- */    
+    -moz-border-radius: 0;  /* Firefox 1-3.6 */     
+    border-radius: 0;  /* Opera 10.5, IE 9, Safari 5, Chrome, Firefox 4, iOS 4, Android 2.1+ */
+    border-radius: 0;
+  }
+  .location .container-sm {
+    display: block;
+  }
+  .container-sm {
+    padding: 0 20px;
+  }
+}
+.container-sm.flex.f-vertical-center picture {
+  width: calc(100% - 471px);
+}
+@media (max-width: 600px) {
+  .btn, .btn__sm, .btn__fill, #esc-oos-form #esc-out-of-stock-inputs .esc-btn {
+      height: 50px;
+  }
+}
+@media (max-width: 768px) {
+  .btn, .btn__sm, .btn__fill, #esc-oos-form #esc-out-of-stock-inputs .esc-btn {
+      height: 57.5px;
+  }
+}
+.location img {
+  display: block;
+  min-width: 220px;
+}
+@media (max-width: 768px) {
+  .location img {
+    width: 100%;
+  }
+}
+.location__information {
+  width: 391px;
+  margin-left: 80px;
+}
+@media (max-width: 1024px) {
+  .location__information {
+    margin-left: 50px;
+  }
+}
+@media (max-width: 768px) {
+  .location__information {
+    margin-left: 0;
+    margin-top: 55px;
+    width: 100%;
+  }
+}
+@media (max-width: 600px) {
+  .location__information {
+    margin-top: 40px;
+  }
+}
+.location__information .contact-information__grid--item {
+  margin: 30px 0 0;
+}
+.location__information .contact-information__grid--item .more-button a {
+  font-size: 16px;
+  padding: 15px 0;
+  text-align: center;
+  text-decoration: underline;
+}
+.locations .container,
+.locations .container-lg,
+.locations .container-sm,
+.locations .container-md,
+.locations #tech-dignity-recent-view .td-slider-wrapper,
+#tech-dignity-recent-view .locations .td-slider-wrapper {
+  padding-top: 10px;
+}
+.locations__selector {
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  -webkit-align-items: stretch;
+  -moz-align-items: stretch;
+  align-items: stretch;
+  height: 556px;
+  margin-top: 60px;
+}
+@media (max-width: 1024px) {
+  .locations__selector {
+    -webkit-box-direction: reverse;
+    -webkit-box-orient: vertical;
+    -webkit-flex-direction: column-reverse;
+    -moz-flex-direction: column-reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    -webkit-align-items: flex-start;
+    -moz-align-items: flex-start;
+    align-items: flex-start;
+    height: auto;
+  }
+}
+.locations__selector--list {
+  width: 264px;
+  padding-right: 60px;
+  margin-right: 70px;
+  max-height: 100%;
+  overflow-y: auto;
+}
+.locations__selector--list::-webkit-scrollbar-track {
+  background-color: #eee;
+}
+.locations__selector--list::-webkit-scrollbar {
+  width: 6px;
+  background-color: #f5f5f5;
+}
+.locations__selector--list::-webkit-scrollbar-thumb {
+  background-color: #979797;
+}
+@media (max-width: 1024px) {
+  .locations__selector--list {
+    width: 100%;
+    padding-right: 0;
+  }
+}
+.locations__selector--list-item {
+  text-align: left;
+  height: 70px;
+  font-size: 18px;
+  font-weight: 300;
+  width: 100%;
+  text-transform: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  justify-content: space-between;
+  text-decoration: none;
+  color: black;
+}
+.locations__selector--list-item:nth-of-type(n + 2) {
+  border-top: 1px solid rgba(151, 151, 151, 0.2);
+}
+.locations__selector--list-item:after {
+  content: "";
+  width: 20px;
+  height: 20px;
+  background-image: url(//www.irisfashion.co.uk/cdn/shop/t/175/assets/chevron-left.svg?v=12423638440236196251680079708);
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+@media (min-width: 769px) {
+  .btn.m-t-s:hover {
+      background: #000;
+      color: #fff;
+  }
+}
+.locations__selector--map {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -moz-box-flex: 1;
+  -moz-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+}
+@media (max-width: 1024px) {
+  .locations__selector--map {
+    height: 60vw;
+    min-height: 60vw;
+  }
+}
+.contact-information__subtitle {
+  font-size: 21px;
+  letter-spacing: 0px;
+  line-height: 50px;
+}
+.contact-information {
+  margin: 80px 0;
+}
+.contact-information .container {
+  width: 994px;
+  margin: 0 auto;
+}
+.subtitle-md {
+  font-size: 18px;
+  letter-spacing: 1.5px;
+  font-family: Lato, sans-serif;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+.list-clear {
+  padding: 0;
+}
+.contact-information__grid {
+  margin-top: 50px;
+  width: calc(100% + 90px);
+  position: relative;
+  left: -45px;
+}
+.contact-information__grid--item li {
+  display: flex;
+  align-items: center;
+  gap: 2.1rem;
+}
+.contact-information__grid--item li:nth-of-type(n + 2) {
+  margin-top: 20px;
+}
+.bold {
+  font-weight: 700;
+}
+.md {
+  font-size: 13px;
+}
