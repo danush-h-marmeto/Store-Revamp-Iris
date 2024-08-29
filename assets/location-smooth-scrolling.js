@@ -44,7 +44,7 @@ class SmoothScrollElement extends HTMLElement {
       requestAnimationFrame(() => {
         this.isScrolling = false;
       });
-    }, 2000); 
+    }, 1000); 
   }
 
   observeTargetElements() {
@@ -66,7 +66,7 @@ class SmoothScrollElement extends HTMLElement {
       },
       {
         root: null,
-        threshold: 1, 
+        threshold: .75, 
       }
     );
 

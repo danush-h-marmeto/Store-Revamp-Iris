@@ -1,12 +1,13 @@
 {{ 'location.css' |  asset_url |  stylesheet_tag }}
 <script src="{{"location-smooth-scrolling.js" |  asset_url}}" defer></script>
+
 {%- style -%}
 .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px;
     padding-bottom: {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px;
 }
 
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 749px) {
     .section-{{ section.id }}-padding {
         padding-top: {{ section.settings.padding_top }}px;
         padding-bottom: {{ section.settings.padding_bottom }}px;
@@ -17,231 +18,209 @@
 <div class="locations color-{{ section.settings.color_scheme }} section-{{ section.id }}-padding ">
     <div class="page-width">
         {%- if section.settings.title != blank -%}
-            <h2 class="locations__tile title-md">
-                {{ section.settings.title }}
-            </h2>
+        <h2 class="locations__tile title-md">
+            {{ section.settings.title }}
+        </h2>
         {%- endif -%}
         <smooth-scroll-element>
-        <div class="locations__selector">
-            <div class="locations-selector--list grid grid--3-col grid--5-col-desktop">
-                {%- for block in section.blocks -%}
+            <div class="locations__selector">
+                <div class="locations-selector--list grid grid--3-col grid--5-col-desktop">
+                    {%- for block in section.blocks -%}
                     {% assign location_page = pages[block.settings.page] %}
-                    <a  href="#{{ location_page.handle }}"  class="grid__item uc">{{ location_page.title }}</a>
-                {%- endfor -%}
-            </div>
-            <div class="location-content">
-            {%- for block in section.blocks -%}
-            {% assign location_page = pages[block.settings.page] %}
-            <div id="{{ location_page.handle }}" class="location-content--item {{ block.settings.content_position}}">
-                {%- if block.settings.image != blank -%}
-                <div class="location-content--image">
-                    {%- render 'responsive-picture', desktopImage: block.settings.image, class: 'media media--landscape' -%}
-                </div>
-                {%- else -%}
-                {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
-                {%- endif -%}
-                <div class="location-content--text">
-                    <div class="location-content--textarea flex gap-1">
-                        {%- if location_page != blank -%}
-                            <p class="location-content--title">{{ location_page.title }}</p>
-                        {%- endif -%}
-                        {% if block.settings.email != blank %}
-                            <div class="location-content--email bold md flex gap-1">
-                                {%- render 'icons', icon: 'email' -%}
-                                <a class="full-unstyled-link" href="mailto:{{ block.settings.email }}">{{ block.settings.email }}</a>
-                            </div>
-                        {% endif %}
-                        {% if block.settings.tel != blank %}
-                            <div class="location-content--phone  bold md flex gap-1">
-                                {%- render 'icons', icon: 'phone' -%}
-                                <a class="full-unstyled-link" href="tel:{{ block.settings.tel | replace: '+44(0)', '0' | remove: ' ' | remove: '+' | remove: '(' | remove: ')' | remove: ' ' }}">{{ block.settings.tel }}</a>
-                            </div>
-                        {% endif %}
-                        <p class="location-content--address">{{ block.settings.address }}</p>
-                    </div>
-                    <div class="location-content--btn">
-                        {%- if block.settings.btn_text != blank -%}
-                        <a href="{{ pages[block.settings.page].url }}" class="location-content--cta">
-                            {{ block.settings.btn_text }}
+                    {%- if location_page.title != blank -%}
+                        <a href="#{{ location_page.handle }}" class="grid__item uc">
+                            {{ location_page.title }}
                         </a>
+                    {%- endif -%}
+                    {%- endfor -%}
+                </div>
+                <div class="location-content gap-2">
+                    {%- for block in section.blocks -%}
+                    {% assign location_page = pages[block.settings.page] %}
+                    <div id="{{ location_page.handle }}"
+                        class="location-content--item {{ block.settings.content_position}}">
+                        {%- if block.settings.image != blank -%}
+                        <div class="location-content--image">
+                            {%- render 'responsive-picture', desktopImage: block.settings.image, class: 'media
+                            media--landscape' -%}
+                        </div>
+                        {%- else -%}
+                        <div class="media media--landscape">
+                            {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                        </div>
                         {%- endif -%}
+                        <div class="location-content--text">
+                            <div class="location-content--textarea flex gap-1">
+                                {%- if location_page != blank -%}
+                                <p class="location-content--title">{{ location_page.title }}</p>
+                                {%- endif -%}
+                                {% if block.settings.email != blank %}
+                                <div class="bold md">
+                                    <a class="full-unstyled-link flex gap-1 location-content--email" href="mailto:{{ block.settings.email }}">
+                                        {%- render 'icons', icon: 'email' -%}
+                                        {{ block.settings.email }}
+                                    </a>
+                                </div>
+                                {% endif %}
+                                {% if block.settings.telephone != blank %}
+                                <div class="bold md">
+                                    <a class="full-unstyled-link flex gap-1 location-content--phone"
+                                    href="tel:{{ block.settings.telephone | replace: '+44(0)', '0' | remove: ' ' | remove: '+' | remove: '(' | remove: ')' | remove: ' ' }}">
+                                    {%- render 'icons', icon: 'phone' -%}
+                                    {{ block.settings.telephone }}
+                                    </a>
+                                </div>
+                                {% endif %}
+                                {% if block.settings.address != blank %}
+                                <div class="bold flex md location-content--address gap-1">
+                                    {%- render 'icons', icon: 'pin' -%}
+                                    <div>{{ block.settings.address }}</div>
+                                </div>
+                                {% endif %}
+                            </div>
+                            {%- if block.settings.btn_text != blank -%}
+                                <div class="location-content--btn">
+                                    <a href="{{ pages[block.settings.page].url }}" class="location-content--cta">
+                                        {{ block.settings.btn_text }}
+                                    </a>
+                                </div>
+                            {%- endif -%}
+                        </div>
                     </div>
+                    {%- endfor -%}
                 </div>
             </div>
-        {%- endfor -%}
-        </div>
-        </div>
         </smooth-scroll-element>
     </div>
 </div>
 
 {% schema %}
 {
-    "name":"Locations",
-    "settings":[
+  "name": "Locations",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Our boutiques"
+    },
+    {
+      "type": "header",
+      "content": "Padding settings"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "location",
+      "name": "Location",
+      "settings": [
         {
-            "type": "color_scheme",
-            "id": "color_scheme",
-            "label": "t:sections.all.colors.label",
-            "default": "scheme-1"
+          "type": "page",
+          "id": "page",
+          "label": "Location page"
         },
         {
-            "type":"text",
-            "id":"title",
-            "label":"Title",
-            "default":"Our boutiques"
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
         },
         {
-        "type": "header",
-        "content": "Padding settings"
+          "type": "text",
+          "id": "email",
+          "label": "Email"
         },
         {
-        "type": "range",
-        "id": "padding_top",
-        "min": 0,
-        "max": 100,
-        "step": 4,
-        "unit": "px",
-        "label": "Padding top",
-        "default": 36
+          "type": "text",
+          "id": "telephone",
+          "label": "Telephone"
         },
         {
-        "type": "range",
-        "id": "padding_bottom",
-        "min": 0,
-        "max": 100,
-        "step": 4,
-        "unit": "px",
-        "label": "Padding Bottom",
-        "default": 36
+          "type": "text",
+          "id": "address",
+          "label": "Address"
+        },
+        {
+          "type": "text",
+          "id": "btn_text",
+          "label": "CTA Button Text",
+          "default": "Know More"
+        },
+        {
+          "type": "select",
+          "id": "content_position",
+          "options": [
+            {
+              "value": "row",
+              "label": "Image 1st"
+            },
+            {
+              "value": "row-reverse",
+              "label": "Image 2nd"
+            }
+          ],
+          "default": "row",
+          "label": "Content position",
+          "info": "this settings apply only for desktop"
         }
-    ],
-    "blocks":[
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Location",
+      "blocks": [
         {
-            "type":"location",
-            "name":"Location",
-            "settings":[
-                {
-                    "type": "page",
-                    "id": "page",
-                    "label": "Location page"
-                },
-                {
-                    "type":"image_picker",
-                    "id":"image",
-                    "label":"Image"
-                },
-                {
-                    "type":"text",
-                    "id":"contact_info_title",
-                    "label":"Contact information title",
-                    "placeholder":"HEAD OFFICE"
-                },
-                {
-                "type":"text",
-                "id":"email",
-                "label":"Email"
-                },
-                {
-                "type":"text",
-                "id":"tel",
-                "label":"Telephone"
-                },
-                {
-                    "type":"text",
-                    "id":"address",
-                    "label":"Address"
-                },
-                {
-                    "type":"text",
-                    "id":"btn_text",
-                    "label":"CTA Button Text",
-                    "default":"Know More"
-                },
-                    {
-                    "type": "select",
-                    "id": "content_position",
-                    "options": [
-                    {
-                    "value": "row",
-                    "label": "Image 1st"
-                    },
-                    {
-                    "value": "row-reverse",
-                    "label": "Image 2nd"
-                    }
-                    ],
-                    "default": "row",
-                    "label": "Content position",
-                    "info": "this settings apply only for desktop"
-                    }
-            ]
-        }
-    ],
-    "presets": [
+          "type": "location",
+          "settings": {
+            "page": "about",
+            "image": "shopify://shop_images/sample.jpg",
+            "email": "info@boutique.com",
+            "telephone": "+123456789",
+            "address": "123 Boutique St, Fashion City",
+            "btn_text": "Visit Store",
+            "content_position": "row"
+          }
+        },
         {
-            "name": "Location"
+          "type": "location",
+          "settings": {
+            "page": "about",
+            "image": "shopify://shop_images/sample2.jpg",
+            "email": "contact@boutique.com",
+            "telephone": "+987654321",
+            "address": "456 Couture Ave, Style Town",
+            "btn_text": "Explore More",
+            "content_position": "row-reverse"
+          }
         }
-    ]
+      ]
+    }
+  ]
 }
 {% endschema %}
-{%- comment -%}
-{%- for block in section.blocks -%}
-{%- if block.settings.page == page.handle -%}
-<section class="location">
-    <div class="container-sm flex f-vertical-center">
-        {% render 'responsive-picture', desktopImage:block.settings.image %}
-
-        <div class="location__information">
-            <div class="rte">
-                {{ page.content }}
-            </div>
-
-            {% if block.settings.contact_info_title != blank or block.settings.email != blank or block.settings.tel !=
-            blank or block.settings.address != blank or block.settings.btn_url != blank %}
-            <div class="contact-information__grid--item">
-                {% if block.settings.contact_info_title != blank %}
-                <h3 class="subtitle-md">{{ block.settings.contact_info_title }}</h3>
-                {% endif %}
-                {% if block.settings.email != blank or block.settings.tel != blank or block.settings.address != blank or
-                block.settings.btn_url != blank %}
-                <ul class="list-clear list-unstyled">
-                    {% if block.settings.email != blank %}
-                    <li class="bold md">
-                        {%- render 'icons', icon: 'email' -%}
-                        <a class="full-unstyled-link" href="mailto:{{ block.settings.email }}">{{ block.settings.email
-                            }}</a>
-                    </li>
-                    {% endif %}
-                    {% if block.settings.tel != blank %}
-                    <li class="bold md">
-                        {%- render 'icons', icon: 'phone' -%}
-                        <a class="full-unstyled-link"
-                            href="tel:{{ block.settings.tel | replace: '+44(0)', '0' | remove: ' ' | remove: '+' | remove: '(' | remove: ')' | remove: ' ' }}">{{
-                            block.settings.tel }}</a>
-                    </li>
-                    {% endif %}
-                    {% if block.settings.address != blank %}
-                    <li class="bold md">
-                        {%- render 'icons', icon: 'pin' -%}
-                        <p>{{ block.settings.address }}</p>
-                    </li>
-                    {% endif %}
-                    {% if block.settings.btn_text != blank %}
-                    <li class="more-button">
-                        <a class="full-unstyled-link" href="{{ block.settings.btn_url }}">{{ block.settings.btn_text
-                            }}</a>
-                    </li>
-                    {% endif %}
-                </ul>
-                {% endif %}
-            </div>
-            {% endif %}
-
-        </div>
-    </div>
-</section>
-{%- endif -%}
-{%- endfor -%}
-
-{%- endcomment -%}
