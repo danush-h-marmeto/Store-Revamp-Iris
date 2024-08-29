@@ -4502,3 +4502,15 @@ summary.menu-drawer__menu-item::after {
         -webkit-appearance: radio !important;
   }
 }
+.gap-1{
+  gap: 1rem;
+}
+.gap-2{
+  gap: 2rem;
+}
+.gap-3{
+  gap: 3rem;
+}
+.gap-4{
+  gap: 4rem;
+}

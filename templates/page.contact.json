@@ -83,9 +83,7 @@
         "thank_you_title": "Thank you",
         "thank_you_text": "<p>Your message has been sent<\/p>",
         "thank_you_cta_link": "https:\/\/www.irisfashion.co.uk\/",
-        "thank_you_cta_text": "Back to home",
-        "padding_top": 0,
-        "padding_bottom": 0
+        "thank_you_cta_text": "Back to home"
       }
     },
     "location_mHrXf3": {
@@ -95,14 +93,9 @@
           "type": "location",
           "settings": {
             "page": "barnes-1",
-            "map_lat": "51.475033",
-            "map_lng": "-0.240208",
             "image": "shopify:\/\/shop_images\/Barnes_c50ba590-3992-4433-8b76-a948ab65f33b.jpg",
             "contact_info_title": "Get in touch",
-            "email": "barnes@irisfashion.co.uk",
-            "tel": "020 8741 0816",
             "address": "86 Church Road, Barnes, SW13 0DQ",
-            "btn_url": "",
             "btn_text": ""
           }
         },
@@ -110,14 +103,9 @@
           "type": "location",
           "settings": {
             "page": "battersea-1",
-            "map_lat": "51.5151",
-            "map_lng": "-0.164779",
             "image": "shopify:\/\/shop_images\/Battersea.jpg",
             "contact_info_title": "Get in touch",
-            "email": "battersea@irisfashion.co.uk",
-            "tel": "020 7924 6948",
             "address": "143-145 Northcote Road, London, SW11 6PX",
-            "btn_url": "",
             "btn_text": ""
           }
         },
@@ -125,14 +113,9 @@
           "type": "location",
           "settings": {
             "page": "hampstead-1",
-            "map_lat": "",
-            "map_lng": "",
             "image": "shopify:\/\/shop_images\/Store_Hampstead.jpg",
             "contact_info_title": "Hampstead",
-            "email": "hampstead@irisfashion.co.uk",
-            "tel": "0207 435 3007.",
             "address": "28 Rosslyn Hill, London, NW3 1NH",
-            "btn_url": "",
             "btn_text": ""
           }
         },
@@ -140,14 +123,9 @@
           "type": "location",
           "settings": {
             "page": "wimbledon-1",
-            "map_lat": "51.424930",
-            "map_lng": "-0.216670",
             "image": "shopify:\/\/shop_images\/wimbledon_pic.jpg",
             "contact_info_title": "Head office",
-            "email": "customercare@irisfashion.co.uk",
-            "tel": "0203 7505699",
             "address": "74 High St, Wimbledon SW19 5EG",
-            "btn_url": "shopify:\/\/pages\/wimbledon",
             "btn_text": ""
           }
         },
@@ -155,14 +133,9 @@
           "type": "location",
           "settings": {
             "page": "chiswick-pop-up-store-1",
-            "map_lat": "-0.258202",
-            "map_lng": "51.492799",
             "image": "shopify:\/\/shop_images\/CHISWICK_STORE.jpg",
             "contact_info_title": "GET IN TOUCH",
-            "email": "chiswick@irisfashoin.co.uk",
-            "tel": "",
             "address": "198 Chiswick High Rd, London W4 1PD",
-            "btn_url": "",
             "btn_text": ""
           }
         }

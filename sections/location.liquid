@@ -1,81 +1,90 @@
 {{ 'location.css' |  asset_url |  stylesheet_tag }}
-{%- for block in section.blocks -%}
-        {%- if block.settings.page == page.handle -%}
-            <section class="location">
-                <div class="container-sm flex f-vertical-center">
-                    {% render 'responsive-picture', desktopImage:block.settings.image %}
+<script src="{{"location-smooth-scrolling.js" |  asset_url}}" defer></script>
+{%- style -%}
+.section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px;
+}
 
-                    <div class="location__information">
-                        <div class="rte">
-                            {{ page.content }}
-                        </div>
+@media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+}
+{%- endstyle -%}
 
-                        {% if block.settings.contact_info_title != blank or block.settings.email != blank or block.settings.tel != blank or block.settings.address != blank or block.settings.btn_url != blank %}
-                            <div class="contact-information__grid--item">
-                                {% if block.settings.contact_info_title != blank %}
-                                    <h3 class="subtitle-md">{{ block.settings.contact_info_title }}</h3>
-                                {% endif %}
-                                {% if block.settings.email != blank or block.settings.tel != blank or block.settings.address != blank or block.settings.btn_url != blank %}
-                                    <ul class="list-clear list-unstyled">
-                                        {% if block.settings.email != blank %}
-                                            <li class="bold md">
-                                                {%- render 'icons', icon: 'email' -%}
-                                                <a class="full-unstyled-link" href="mailto:{{ block.settings.email }}">{{ block.settings.email }}</a>
-                                            </li>
-                                        {% endif %}
-                                        {% if block.settings.tel != blank %}
-                                            <li class="bold md">
-                                                {%- render 'icons', icon: 'phone' -%}
-                                                <a class="full-unstyled-link" href="tel:{{ block.settings.tel | replace: '+44(0)', '0' | remove: ' ' | remove: '+' | remove: '(' | remove: ')' | remove: ' ' }}">{{ block.settings.tel }}</a>
-                                            </li>
-                                        {% endif %}
-                                        {% if block.settings.address != blank %}
-                                            <li class="bold md">
-                                                {%- render 'icons', icon: 'pin' -%}
-                                                <p>{{ block.settings.address }}</p>
-                                            </li>
-                                        {% endif %}
-                                        {% if block.settings.btn_text != blank %}
-                                            <li class="more-button">
-                                                <a class="full-unstyled-link" href="{{ block.settings.btn_url }}">{{ block.settings.btn_text }}</a>
-                                            </li>
-                                        {% endif %}
-                                    </ul>
-                                {% endif %}
-                            </div>
-                        {% endif %}
-
-                    </div>
-                </div>
-            </section>
+<div class="locations color-{{ section.settings.color_scheme }} section-{{ section.id }}-padding ">
+    <div class="page-width">
+        {%- if section.settings.title != blank -%}
+            <h2 class="locations__tile title-md">
+                {{ section.settings.title }}
+            </h2>
         {%- endif -%}
-{%- endfor -%}
-
-<section class="locations">
-    <div class="container-sm">
-        <h2 class="locations__tile title-md">{{ section.settings.title }}</h2>
-        <div class="locations__selector flex">
-            <div class="locations__selector--list">
+        <smooth-scroll-element>
+        <div class="locations__selector">
+            <div class="locations-selector--list grid grid--3-col grid--5-col-desktop">
                 {%- for block in section.blocks -%}
                     {% assign location_page = pages[block.settings.page] %}
-                    <a href="{{ pages[block.settings.page].url }}"  class="locations__selector--list-item">{{ location_page.title }}</a>
+                    <a  href="#{{ location_page.handle }}"  class="grid__item uc">{{ location_page.title }}</a>
                 {%- endfor -%}
             </div>
-            {% assign map_to_show = section.blocks.first %}
-                {%- for block in section.blocks -%}
-                    {%- if block.settings.page == page.handle -%}
-                        {% assign map_to_show = block %}
-                    {%- endif -%}
-                {%- endfor -%}
-            {%- render 'google-map', lat: map_to_show.settings.map_lat, lng: map_to_show.settings.map_lng, class: 'locations__selector--map' -%}
+            <div class="location-content">
+            {%- for block in section.blocks -%}
+            {% assign location_page = pages[block.settings.page] %}
+            <div id="{{ location_page.handle }}" class="location-content--item {{ block.settings.content_position}}">
+                {%- if block.settings.image != blank -%}
+                <div class="location-content--image">
+                    {%- render 'responsive-picture', desktopImage: block.settings.image, class: 'media media--landscape' -%}
+                </div>
+                {%- else -%}
+                {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                {%- endif -%}
+                <div class="location-content--text">
+                    <div class="location-content--textarea flex gap-1">
+                        {%- if location_page != blank -%}
+                            <p class="location-content--title">{{ location_page.title }}</p>
+                        {%- endif -%}
+                        {% if block.settings.email != blank %}
+                            <div class="location-content--email bold md flex gap-1">
+                                {%- render 'icons', icon: 'email' -%}
+                                <a class="full-unstyled-link" href="mailto:{{ block.settings.email }}">{{ block.settings.email }}</a>
+                            </div>
+                        {% endif %}
+                        {% if block.settings.tel != blank %}
+                            <div class="location-content--phone  bold md flex gap-1">
+                                {%- render 'icons', icon: 'phone' -%}
+                                <a class="full-unstyled-link" href="tel:{{ block.settings.tel | replace: '+44(0)', '0' | remove: ' ' | remove: '+' | remove: '(' | remove: ')' | remove: ' ' }}">{{ block.settings.tel }}</a>
+                            </div>
+                        {% endif %}
+                        <p class="location-content--address">{{ block.settings.address }}</p>
+                    </div>
+                    <div class="location-content--btn">
+                        {%- if block.settings.btn_text != blank -%}
+                        <a href="{{ pages[block.settings.page].url }}" class="location-content--cta">
+                            {{ block.settings.btn_text }}
+                        </a>
+                        {%- endif -%}
+                    </div>
+                </div>
+            </div>
+        {%- endfor -%}
         </div>
+        </div>
+        </smooth-scroll-element>
     </div>
-</section>
+</div>
 
 {% schema %}
 {
     "name":"Locations",
     "settings":[
+        {
+            "type": "color_scheme",
+            "id": "color_scheme",
+            "label": "t:sections.all.colors.label",
+            "default": "scheme-1"
+        },
         {
             "type":"text",
             "id":"title",
@@ -83,36 +92,28 @@
             "default":"Our boutiques"
         },
         {
-            "type":"header",
-            "content":"Map"
+        "type": "header",
+        "content": "Padding settings"
         },
         {
-            "type":"text",
-            "id":"api_key",
-            "label":"Google Maps API key",
-            "info":"See https://help.shopify.com/manual/using-themes/troubleshooting/map-section-api-key"
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding top",
+        "default": 36
         },
         {
-            "type":"range",
-            "id":"map_zoom",
-            "min":1,
-            "max":20,
-            "step":1,
-            "unit":"x",
-            "label":"Zoom level",
-            "default":14
-        },
-        {
-            "type":"image_picker",
-            "id":"map_marker",
-            "label":"Custom map marker",
-            "info":"Optional"
-        },
-        {
-            "type":"html",
-            "id":"map_style",
-            "label":"Copy + Paste map style code here",
-            "info":"See: https://snazzymaps.com/"
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 36
         }
     ],
     "blocks":[
@@ -126,16 +127,6 @@
                     "label": "Location page"
                 },
                 {
-                    "type":"text",
-                    "id":"map_lat",
-                    "label":"Latitude/Lat"
-                },
-                {
-                    "type":"text",
-                    "id":"map_lng",
-                    "label":"Longitude/Lng"
-                },
-                {
                     "type":"image_picker",
                     "id":"image",
                     "label":"Image"
@@ -147,14 +138,14 @@
                     "placeholder":"HEAD OFFICE"
                 },
                 {
-                    "type":"text",
-                    "id":"email",
-                    "label":"Email"
+                "type":"text",
+                "id":"email",
+                "label":"Email"
                 },
                 {
-                    "type":"text",
-                    "id":"tel",
-                    "label":"Telephone"
+                "type":"text",
+                "id":"tel",
+                "label":"Telephone"
                 },
                 {
                     "type":"text",
@@ -162,15 +153,28 @@
                     "label":"Address"
                 },
                 {
-                    "type":"url",
-                    "id":"btn_url",
-                    "label":"Button URL"
-                },
-                {
                     "type":"text",
                     "id":"btn_text",
-                    "label":"Button Text"
-                }
+                    "label":"CTA Button Text",
+                    "default":"Know More"
+                },
+                    {
+                    "type": "select",
+                    "id": "content_position",
+                    "options": [
+                    {
+                    "value": "row",
+                    "label": "Image 1st"
+                    },
+                    {
+                    "value": "row-reverse",
+                    "label": "Image 2nd"
+                    }
+                    ],
+                    "default": "row",
+                    "label": "Content position",
+                    "info": "this settings apply only for desktop"
+                    }
             ]
         }
     ],
@@ -181,3 +185,63 @@
     ]
 }
 {% endschema %}
+{%- comment -%}
+{%- for block in section.blocks -%}
+{%- if block.settings.page == page.handle -%}
+<section class="location">
+    <div class="container-sm flex f-vertical-center">
+        {% render 'responsive-picture', desktopImage:block.settings.image %}
+
+        <div class="location__information">
+            <div class="rte">
+                {{ page.content }}
+            </div>
+
+            {% if block.settings.contact_info_title != blank or block.settings.email != blank or block.settings.tel !=
+            blank or block.settings.address != blank or block.settings.btn_url != blank %}
+            <div class="contact-information__grid--item">
+                {% if block.settings.contact_info_title != blank %}
+                <h3 class="subtitle-md">{{ block.settings.contact_info_title }}</h3>
+                {% endif %}
+                {% if block.settings.email != blank or block.settings.tel != blank or block.settings.address != blank or
+                block.settings.btn_url != blank %}
+                <ul class="list-clear list-unstyled">
+                    {% if block.settings.email != blank %}
+                    <li class="bold md">
+                        {%- render 'icons', icon: 'email' -%}
+                        <a class="full-unstyled-link" href="mailto:{{ block.settings.email }}">{{ block.settings.email
+                            }}</a>
+                    </li>
+                    {% endif %}
+                    {% if block.settings.tel != blank %}
+                    <li class="bold md">
+                        {%- render 'icons', icon: 'phone' -%}
+                        <a class="full-unstyled-link"
+                            href="tel:{{ block.settings.tel | replace: '+44(0)', '0' | remove: ' ' | remove: '+' | remove: '(' | remove: ')' | remove: ' ' }}">{{
+                            block.settings.tel }}</a>
+                    </li>
+                    {% endif %}
+                    {% if block.settings.address != blank %}
+                    <li class="bold md">
+                        {%- render 'icons', icon: 'pin' -%}
+                        <p>{{ block.settings.address }}</p>
+                    </li>
+                    {% endif %}
+                    {% if block.settings.btn_text != blank %}
+                    <li class="more-button">
+                        <a class="full-unstyled-link" href="{{ block.settings.btn_url }}">{{ block.settings.btn_text
+                            }}</a>
+                    </li>
+                    {% endif %}
+                </ul>
+                {% endif %}
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+</section>
+{%- endif -%}
+{%- endfor -%}
+
+{%- endcomment -%}
