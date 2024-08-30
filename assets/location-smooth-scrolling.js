@@ -34,6 +34,7 @@ class SmoothScrollElement extends HTMLElement {
       this.checkScrollEnd();
     }
   }
+//handling edge case where the on click it pass through all the titles
 
   checkScrollEnd() {
     if (this.scrollTimeout) {

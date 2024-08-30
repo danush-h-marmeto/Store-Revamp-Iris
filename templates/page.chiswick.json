@@ -1,0 +1,43 @@
+{
+  "sections": {
+    "banner": {
+      "type": "page-banner",
+      "settings": {
+        "title": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "location_page_BKfRYt": {
+      "type": "location-page",
+      "settings": {
+        "color_scheme": "",
+        "title": "Our boutiques",
+        "map_lat": "",
+        "map_lng": "",
+        "image": "shopify:\/\/shop_images\/Chiswick.jpg",
+        "description": "<p>Hello there<\/p>",
+        "email": "",
+        "tel": "",
+        "address": "",
+        "api_key": "",
+        "map_zoom": 14,
+        "map_style": ""
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "main",
+    "location_page_BKfRYt"
+  ]
+}

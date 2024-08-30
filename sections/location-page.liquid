@@ -1,0 +1,110 @@
+{%- style -%}
+.section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px;
+}
+
+@media screen and (min-width: 749px) {
+    .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+}
+{%- endstyle -%}
+<div class="location-page color-{{ section.settings.color_scheme }} section-{{ section.id }}-padding">
+    <div class="location-page--wrapper">
+        {%- render 'responsive-picture', desktopImage: section.settings.image -%}
+    </div>
+</div>
+{% schema %}
+{
+    "name":"Location Page",
+    "settings":[
+        {
+            "type": "color_scheme",
+            "id": "color_scheme",
+            "label": "t:sections.all.colors.label",
+            "default": "scheme-1"
+        },
+        {
+            "type":"text",
+            "id":"title",
+            "label":"Title",
+            "default":"Our boutiques"
+        },
+        {
+            "type":"text",
+            "id":"map_lat",
+            "label":"Latitude/Lat"
+        },
+        {
+            "type":"text",
+            "id":"map_lng",
+            "label":"Longitude/Lng"
+        },
+        {
+            "type":"image_picker",
+            "id":"image",
+            "label":"Image"
+        },
+        {
+            "type":"richtext",
+            "id":"description",
+            "label":"Description",
+            "default":"<p>Hello there</p>"
+        },
+        {
+            "type":"text",
+            "id":"email",
+            "label":"Email"
+        },
+        {
+            "type":"text",
+            "id":"tel",
+            "label":"Telephone"
+        },
+        {
+            "type":"text",
+            "id":"address",
+            "label":"Address"
+        },
+        {
+            "type":"header",
+            "content":"Map"
+        },
+        {
+            "type":"text",
+            "id":"api_key",
+            "label":"Google Maps API key",
+            "info":"See https://help.shopify.com/manual/using-themes/troubleshooting/map-section-api-key"
+        },
+        {
+            "type":"range",
+            "id":"map_zoom",
+            "min":1,
+            "max":20,
+            "step":1,
+            "unit":"x",
+            "label":"Zoom level",
+            "default":14
+        },
+        {
+            "type":"image_picker",
+            "id":"map_marker",
+            "label":"Custom map marker",
+            "info":"Optional"
+        },
+        {
+            "type":"html",
+            "id":"map_style",
+            "label":"Copy + Paste map style code here",
+            "info":"See: https://snazzymaps.com/"
+        }
+    ],
+   "presets": [
+        {
+            "name": "Location Page"
+        }
+    ]
+}
+{% endschema %}
