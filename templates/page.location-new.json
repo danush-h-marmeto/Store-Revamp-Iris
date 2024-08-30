@@ -25,9 +25,8 @@
           "settings": {
             "page": "barnes-1",
             "image": "shopify:\/\/shop_images\/Barnes_c50ba590-3992-4433-8b76-a948ab65f33b.jpg",
-            "contact_info_title": "Get in touch",
             "email": "barnes@irisfashion.co.uk",
-            "tel": "020 8741 0816",
+            "telephone": "020 8741 0816",
             "address": "86 Church Road, Barnes, SW13 0DQ",
             "btn_text": "Know More",
             "content_position": "row"
@@ -38,9 +37,8 @@
           "settings": {
             "page": "battersea-1",
             "image": "shopify:\/\/shop_images\/Battersea.jpg",
-            "contact_info_title": "Get in touch",
             "email": "battersea@irisfashion.co.uk",
-            "tel": "020 7924 6948",
+            "telephone": "020 7924 6948",
             "address": "143-145 Northcote Road, London, SW11 6PX",
             "btn_text": "Know More",
             "content_position": "row-reverse"
@@ -51,9 +49,8 @@
           "settings": {
             "page": "hampstead-1",
             "image": "shopify:\/\/shop_images\/Store_Hampstead.jpg",
-            "contact_info_title": "Hampstead",
             "email": "hampstead@irisfashion.co.uk",
-            "tel": "0207 435 3007.",
+            "telephone": "0207 435 3007.",
             "address": "28 Rosslyn Hill, London, NW3 1NH",
             "btn_text": "Know More",
             "content_position": "row"
@@ -64,9 +61,8 @@
           "settings": {
             "page": "wimbledon-1",
             "image": "shopify:\/\/shop_images\/wimbledon_pic.jpg",
-            "contact_info_title": "Get in touch",
             "email": "wimbledon@irisfashion.co.uk",
-            "tel": "0203 7505699",
+            "telephone": "0203 7505699",
             "address": "74 High St, Wimbledon SW19 5EG",
             "btn_text": "Know More",
             "content_position": "row-reverse"
@@ -77,9 +73,8 @@
           "settings": {
             "page": "chiswick-pop-up-store-1",
             "image": "shopify:\/\/shop_images\/CHISWICK_STORE.jpg",
-            "contact_info_title": "GET IN TOUCH",
             "email": "chiswick@irisfashoin.co.uk",
-            "tel": "",
+            "telephone": "",
             "address": "198 Chiswick High Rd, London W4 1PD",
             "btn_text": "Know More",
             "content_position": "row"
