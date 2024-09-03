@@ -25,8 +25,8 @@
           "settings": {
             "page": "barnes-new-2",
             "image": "shopify:\/\/shop_images\/Barnes_c50ba590-3992-4433-8b76-a948ab65f33b.jpg",
-            "email": "barnes@irisfashion.co.uk",
-            "telephone": "020 8741 0816",
+            "email": "",
+            "telephone": "",
             "address": "86 Church Road, Barnes, SW13 0DQ",
             "btn_text": "Know More",
             "content_position": "row"
@@ -37,8 +37,8 @@
           "settings": {
             "page": "battersea-new-2",
             "image": "shopify:\/\/shop_images\/Battersea.jpg",
-            "email": "battersea@irisfashion.co.uk",
-            "telephone": "020 7924 6948",
+            "email": "",
+            "telephone": "",
             "address": "143-145 Northcote Road, London, SW11 6PX",
             "btn_text": "Know More",
             "content_position": "row-reverse"
@@ -49,8 +49,8 @@
           "settings": {
             "page": "hampstead-new-2",
             "image": "shopify:\/\/shop_images\/Store_Hampstead.jpg",
-            "email": "hampstead@irisfashion.co.uk",
-            "telephone": "0207 435 3007.",
+            "email": "",
+            "telephone": "",
             "address": "28 Rosslyn Hill, London, NW3 1NH",
             "btn_text": "Know More",
             "content_position": "row"
@@ -61,8 +61,8 @@
           "settings": {
             "page": "wimbledon-new-2",
             "image": "shopify:\/\/shop_images\/wimbledon_pic.jpg",
-            "email": "wimbledon@irisfashion.co.uk",
-            "telephone": "0203 7505699",
+            "email": "",
+            "telephone": "",
             "address": "74 High St, Wimbledon SW19 5EG",
             "btn_text": "Know More",
             "content_position": "row-reverse"
@@ -73,7 +73,7 @@
           "settings": {
             "page": "chiswick-pop-up-store-2",
             "image": "shopify:\/\/shop_images\/CHISWICK_STORE.jpg",
-            "email": "chiswick@irisfashoin.co.uk",
+            "email": "",
             "telephone": "",
             "address": "198 Chiswick High Rd, London W4 1PD",
             "btn_text": "Know More",
