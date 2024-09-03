@@ -26,12 +26,12 @@
             <div class="locations__selector">
                 <div class="locations-selector--list grid grid--3-col grid--5-col-desktop">
                     {%- for block in section.blocks -%}
-                    {% assign location_page = pages[block.settings.page] %}
-                    {%- if location_page.title != blank -%}
-                        <a href="#{{ location_page.handle }}" class="grid__item uc">
-                            {{ location_page.title }}
-                        </a>
-                    {%- endif -%}
+                        {% assign location_page = pages[block.settings.page] %}
+                        {%- if location_page.title != blank -%}
+                            <a href="#{{ location_page.handle }}" class="grid__item">
+                                {{ location_page.title }}
+                            </a>
+                        {%- endif -%}
                     {%- endfor -%}
                 </div>
                 <div class="location-content gap-2">
@@ -41,18 +41,17 @@
                         class="location-content--item {{ block.settings.content_position}}">
                         {%- if block.settings.image != blank -%}
                         <div class="location-content--image">
-                            {%- render 'responsive-picture', desktopImage: block.settings.image, class: 'media
-                            media--landscape' -%}
+                            {%- render 'responsive-picture', desktopImage: block.settings.image, class: 'media media--landscape' -%}
                         </div>
                         {%- else -%}
                         <div class="media media--landscape">
-                            {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                            {{ 'product-1' | placeholder_svg_tag }}
                         </div>
                         {%- endif -%}
                         <div class="location-content--text">
                             <div class="location-content--textarea flex gap-1">
                                 {%- if location_page != blank -%}
-                                <p class="location-content--title">{{ location_page.title }}</p>
+                                    <p class="location-content--title">{{ location_page.title }}</p>
                                 {%- endif -%}
                                 {% if block.settings.email != blank %}
                                 <div class="bold md">
@@ -199,7 +198,7 @@
           "type": "location",
           "settings": {
             "page": "about",
-            "image": "shopify://shop_images/sample.jpg",
+            "image": "",
             "email": "info@boutique.com",
             "telephone": "+123456789",
             "address": "123 Boutique St, Fashion City",
@@ -211,7 +210,7 @@
           "type": "location",
           "settings": {
             "page": "about",
-            "image": "shopify://shop_images/sample2.jpg",
+            "image": "",
             "email": "contact@boutique.com",
             "telephone": "+987654321",
             "address": "456 Couture Ave, Style Town",

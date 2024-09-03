@@ -1,7 +1,17 @@
+{{"location-page.css" |  asset_url | stylesheet_tag}}
+
 {%- style -%}
 .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px;
     padding-bottom: {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px;
+}
+.google-map{
+    height:{{ section.settings.map_height}}px;
+}
+
+.page-content{
+    background:{{ section.settings.content_bg_color}};
+    color: {{ section.settings.content_text_color}};
 }
 
 @media screen and (min-width: 749px) {
@@ -11,11 +21,68 @@
     }
 }
 {%- endstyle -%}
+
 <div class="location-page color-{{ section.settings.color_scheme }} section-{{ section.id }}-padding">
-    <div class="location-page--wrapper">
-        {%- render 'responsive-picture', desktopImage: section.settings.image -%}
+    <div class="page-width">
+        <div class="location-page--wrapper grid grid--1-col grid--2-col-desktop">
+            <div class="location-page--image grid__item">
+                {%- if section.settings.image != blank -%}
+                    {%- render 'responsive-picture', desktopImage: section.settings.image, class:'media media--landscape' -%}
+                        {%- else -%}
+                            <div class="media media--landscape">
+                                {{ 'collection-1' | placeholder_svg_tag }}
+                            </div>
+                {%- endif -%}
+            </div>
+            <div class="location-page--details grid__item">
+                {%- if section.settings.title != blank -%}
+                    <div class="{{ section.settings.title_font_size}}">{{ section.settings.title }}</div>
+                {%- endif -%}
+                <div class="location-page--content">
+                    {%- if section.settings.email != blank -%}       
+                        <div class="location-page--detail-item">
+                            {%- render 'icons', icon: 'email' -%}
+                            <span class="location-page--detail-value">{{ section.settings.email }}</span>
+                        </div>
+                    {%- endif -%}
+                    {%- if section.settings.tel != blank -%}     
+                        <div class="location-page--detail-item">
+                            {%- render 'icons', icon: 'phone' -%}
+                            <span class="location-page--detail-value">{{ section.settings.tel }}</span>
+                        </div>
+                    {%- endif -%}
+                    {%- if section.settings.address != blank -%}      
+                        <div class="location-page--detail-item">
+                            {%- render 'icons', icon: 'pin' -%}
+                            <span class="location-page--detail-value">{{ section.settings.address }}</span>
+                        </div>
+                    {%- endif -%}
+                    {%- if section.settings.description != blank -%}                
+                        <div class="location-page--description">
+                            {{ section.settings.description }}
+                        </div>
+                    {%- endif -%}
+                    {%- if section.settings.enable_page_content == true -%}
+                        <div class="page-content">
+                            {{ page.content}}
+                        </div>
+                    {%- endif -%}
+                </div>
+            </div>
+        </div>
+        {%- if section.settings.map_lat != blank and section.settings.map_lng != blank -%}
+            <div class="google-map">
+                {%- render 'google-map', lat: section.settings.map_lat, lng:section.settings.map_lng, class:'locations-selector--map' -%}
+            </div>
+                {%- else -%}
+                <div class="media media--landscape">
+                    {{ 'collection-1' | placeholder_svg_tag }}
+                </div>
+        {%- endif -%}
     </div>
 </div>
+
+
 {% schema %}
 {
     "name":"Location Page",
@@ -29,18 +96,28 @@
         {
             "type":"text",
             "id":"title",
-            "label":"Title",
-            "default":"Our boutiques"
+            "label":"Store Name",
+            "default":"Barnes"
         },
         {
-            "type":"text",
-            "id":"map_lat",
-            "label":"Latitude/Lat"
-        },
-        {
-            "type":"text",
-            "id":"map_lng",
-            "label":"Longitude/Lng"
+            "type": "select",
+            "id": "title_font_size",
+            "options": [
+              {
+                "value": "h1",
+                "label": "Large"
+              },
+              {
+                "value": "h2",
+                "label": "Medium"
+              },
+              {
+                "value": "h3",
+                "label": "Small"
+              }
+            ],
+            "default": "h2",
+            "label": "Font size"
         },
         {
             "type":"image_picker",
@@ -52,6 +129,22 @@
             "id":"description",
             "label":"Description",
             "default":"<p>Hello there</p>"
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_page_content",
+            "label": "Enable page description",
+            "default":true
+        },
+        {
+            "type": "color",
+            "id": "content_bg_color",
+            "label": "Page content background color"
+        },
+        {
+            "type": "color",
+            "id": "content_text_color",
+            "label": "Page content text color"
         },
         {
             "type":"text",
@@ -74,9 +167,29 @@
         },
         {
             "type":"text",
+            "id":"map_lat",
+            "label":"Latitude/Lat"
+        },
+        {
+            "type":"text",
+            "id":"map_lng",
+            "label":"Longitude/Lng"
+        },
+        {
+            "type":"text",
             "id":"api_key",
             "label":"Google Maps API key",
             "info":"See https://help.shopify.com/manual/using-themes/troubleshooting/map-section-api-key"
+        },
+        {
+            "type": "range",
+            "id": "map_height",
+            "min": 500,
+            "max": 1000,
+            "step": 100,
+            "default": 500,
+            "unit": "px",
+            "label": "Map height"
         },
         {
             "type":"range",
