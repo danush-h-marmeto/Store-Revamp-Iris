@@ -42,13 +42,13 @@
                     {%- if section.settings.email != blank -%}       
                         <div class="location-page--detail-item">
                             {%- render 'icons', icon: 'email' -%}
-                            <span class="location-page--detail-value">{{ section.settings.email }}</span>
+                            <a href="mailto:{{ section.settings.email }}" class="full-unstyled-link location-page--detail-value">{{ section.settings.email }}</a>
                         </div>
                     {%- endif -%}
                     {%- if section.settings.tel != blank -%}     
                         <div class="location-page--detail-item">
                             {%- render 'icons', icon: 'phone' -%}
-                            <span class="location-page--detail-value">{{ section.settings.tel }}</span>
+                            <a href="tel:{{ section.settings.tel | replace: '+44(0)', '0' | remove: ' ' | remove: '+' | remove: '(' | remove: ')' | remove: ' ' }}" class="full-unstyled-link location-page--detail-value">{{ section.settings.tel }}</a>
                         </div>
                     {%- endif -%}
                     {%- if section.settings.address != blank -%}      
@@ -139,7 +139,8 @@
         {
             "type": "color",
             "id": "content_bg_color",
-            "label": "Page content background color"
+            "label": "Page content background color",
+            "default":"#D3D3D3"
         },
         {
             "type": "color",
@@ -149,17 +150,20 @@
         {
             "type":"text",
             "id":"email",
-            "label":"Email"
+            "label":"Email",
+            "default":"hello@gmail.com"
         },
         {
             "type":"text",
             "id":"tel",
-            "label":"Telephone"
+            "label":"Telephone",
+            "default":"101"
         },
         {
             "type":"text",
             "id":"address",
-            "label":"Address"
+            "label":"Address",
+            "default":"address text"
         },
         {
             "type":"header",
@@ -174,12 +178,6 @@
             "type":"text",
             "id":"map_lng",
             "label":"Longitude/Lng"
-        },
-        {
-            "type":"text",
-            "id":"api_key",
-            "label":"Google Maps API key",
-            "info":"See https://help.shopify.com/manual/using-themes/troubleshooting/map-section-api-key"
         },
         {
             "type": "range",
@@ -200,12 +198,6 @@
             "unit":"x",
             "label":"Zoom level",
             "default":14
-        },
-        {
-            "type":"image_picker",
-            "id":"map_marker",
-            "label":"Custom map marker",
-            "info":"Optional"
         },
         {
             "type":"html",

@@ -26,6 +26,14 @@
 .location-page--wrapper{
     margin-bottom: 8rem;
 }
+.location-page--detail-value{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1;
+}
 @media (max-width: 749px) {
     .location-page--wrapper{
         margin-bottom: 4rem;

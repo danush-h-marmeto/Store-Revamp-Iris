@@ -45,6 +45,7 @@
 .locations-selector--list .grid__item {
   align-items: center;
   text-align: center;
+  border: 1px solid black;
   padding: 10px;
   background-color: #f7f7f7;
   border-radius: 5px;
@@ -155,6 +156,8 @@
 
   .locations-selector--list {
     margin-bottom: 4rem;
+    row-gap: 1.5rem;
+    top: 6.6rem;
   }
 
   .location-content--title {

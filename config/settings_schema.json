@@ -1772,5 +1772,15 @@
         "label": "Cart icon caption 3"
       }
     ]
+  },
+    {
+    "name": "Store Page Map Settings",
+    "settings": [
+      {
+        "type": "text",
+        "id": "api_key",
+        "label": "Map Api Key"
+      }
+    ]
   }
 ]
